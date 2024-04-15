@@ -1,0 +1,42 @@
+CREATE TABLE customers (
+  customer_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  age INT NOT NULL
+);
+
+
+
+
+CREATE TABLE products (
+  product_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  price DECIMAL(10,2) NOT NULL,
+  stock INT DEFAULT 0
+);
+
+INSERT INTO products (name, description, price, stock)
+VALUES ('T-Shirt', 'A comfortable and stylish T-Shirt', 19.99, 100),
+       ('Laptop', 'Powerful laptop for work and play', 799.99, 20),
+       ('Headphones', 'Wireless headphones with excellent sound quality', 99.99, 50);
+
+
+CREATE TABLE orders (
+  order_id INT PRIMARY KEY AUTO_INCREMENT,
+  product_id INT,
+  customer_id INT,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+  FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+INSERT INTO customers (name,age)
+VALUES ('John Doe', 25), ('Hasan Cinar', 25), ('Yucel Saygin', 25);
+     
+
+
+
+
+
+
+INSERT INTO customers (name, age) VALUES ('Jane Smith', 25);
